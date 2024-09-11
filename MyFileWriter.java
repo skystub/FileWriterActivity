@@ -14,6 +14,7 @@ public class MyFileWriter {
     }
 
     public static void createHiddenFile(String path, String name, String content) throws IOException {
+
         File hiddenFile = new File(path, name);
         FileWriter fw = new FileWriter(hiddenFile);
         BufferedWriter bw = new BufferedWriter(fw);
@@ -35,7 +36,4 @@ public class MyFileWriter {
         bw.write(content);
         bw.close();
     }
-
-    // turn into something dont hard code, add in checking if folder/file exists
-    // also
 }

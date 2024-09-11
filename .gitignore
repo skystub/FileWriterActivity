@@ -1,0 +1,6 @@
+.DS_Store
+.git
+*.txt
+MyFileWriter.class
+README.md
+.hiddenFolder

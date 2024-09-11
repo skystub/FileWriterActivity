@@ -4,47 +4,38 @@ import java.nio.file.*;
 import java.nio.charset.StandardCharsets;
 
 public class MyFileWriter {
-    public static void main(String[] args) {
-        String data = "Hello, World!";
-        String fileName1 = "example.txt";
-        String fileName2 = "example2.txt";
-        String fileName3 = "example3.txt";
-        String fileName4 = "example4.txt";
-        String fileName5 = "example5.txt";
+    public static void main(String[] args) throws IOException {
+        createHiddenFile("/Users/skystubbeman/Documents/HTCS_Projects/FileWriterActivity/", ".secretstuff.txt",
+                "pw: password");
 
-        // 1. Using FileWriter
-        try (FileWriter writer = new FileWriter(fileName1)) {
-            writer.write(data);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // 2. Using BufferedWriter
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName2))) {
-            bufferedWriter.write(data);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // 3. Using FileOutputStream
-        try (FileOutputStream outputStream = new FileOutputStream(fileName3)) {
-            outputStream.write(data.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // 4. Using BufferedOutputStream
-        try (BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(fileName4))) {
-            bufferedOutputStream.write(data.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // 5. Using Files (java.nio.file)
-        try {
-            Files.write(Paths.get(fileName5), data.getBytes(StandardCharsets.UTF_8));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        createHiddenFolderAndFile("/Users/skystubbeman/Documents/HTCS_Projects/FileWriterActivity/",
+                ".hiddenFolder.txt",
+                "secretsecretfile.txt", "this is really hidden!");
     }
+
+    public static void createHiddenFile(String path, String name, String content) throws IOException {
+        File hiddenFile = new File(path, name);
+        FileWriter fw = new FileWriter(hiddenFile);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(content);
+        bw.close();
+    }
+
+    public static void createHiddenFolderAndFile(String path, String folderName, String fileName, String content)
+            throws IOException {
+        File hiddenFolder = new File(path, folderName);
+
+        hiddenFolder.mkdirs();
+
+        File file = new File(path + folderName,
+                fileName);
+
+        FileWriter fw = new FileWriter(file);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(content);
+        bw.close();
+    }
+
+    // turn into something dont hard code, add in checking if folder/file exists
+    // also
 }

@@ -36,4 +36,8 @@ public class MyFileWriter {
         bw.write(content);
         bw.close();
     }
+
+    public static void printFileSize(String filename){
+        //implement my print filesize
+    }
 }

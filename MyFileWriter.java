@@ -5,12 +5,13 @@ import java.nio.charset.StandardCharsets;
 
 public class MyFileWriter {
     public static void main(String[] args) throws IOException {
-        createHiddenFile("/Users/skystubbeman/Documents/HTCS_Projects/FileWriterActivity/", ".secretstuff.txt",
-                "pw: password");
+        // createHiddenFile("/Users/skystubbeman/Documents/HTCS_Projects/FileWriterActivity/", ".secretstuff.txt",
+        //         "pw: password");
 
-        createHiddenFolderAndFile("/Users/skystubbeman/Documents/HTCS_Projects/FileWriterActivity/",
-                ".hiddenFolder.txt",
-                "secretsecretfile.txt", "this is really hidden!");
+        // createHiddenFolderAndFile("/Users/skystubbeman/Documents/HTCS_Projects/FileWriterActivity/",
+        //         ".hiddenFolder.txt",
+        //         "secretsecretfile.txt", "this is really hidden!");
+        // printFileSize("/Users/skystubbeman/Documents/HTCS_Projects/Activity1/example5.txt");
     }
 
     public static void createHiddenFile(String path, String name, String content) throws IOException {
@@ -35,6 +36,13 @@ public class MyFileWriter {
         BufferedWriter bw = new BufferedWriter(fw);
         bw.write(content);
         bw.close();
+    }
+
+    //printFileSize - prints the length of the contents of the file.
+    public static void printFileSize(String filename){
+        File file = new File (filename);
+        long fileSize = file.length();
+        System.out.println("The length of the file is: " + fileSize);
     }
 }
 //hello!
